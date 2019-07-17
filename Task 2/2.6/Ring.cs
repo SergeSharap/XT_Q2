@@ -11,9 +11,14 @@ namespace Task2
 
         public Ring(double inRadius, double outRadius, double x, double y)
         {
-            inner = new Round(inRadius);
-            outer = new Round(outRadius);
-            Center = new Point(x, y);
+            if (inRadius < outRadius)
+            {
+                inner = new Round(inRadius);
+                outer = new Round(outRadius);
+                Center = new Point(x, y);
+            }
+            else
+                throw new ArgumentException("The inner round must be less than outer radius");
         }
 
         public Round Inner
@@ -21,10 +26,10 @@ namespace Task2
             get => inner;
             set
             {
-                if (value is Round && value.Radius < Outer.Radius)
-                    inner = (Round)value;
+                if (value.Radius < Outer.Radius)
+                    inner = value;
                 else
-                    throw new ArgumentException("The inner round must be Round class and less than outer radius");
+                    throw new ArgumentException("The inner round must be less than outer radius");
             }
         }
         public Round Outer
@@ -32,10 +37,10 @@ namespace Task2
             get => outer;
             set
             {
-                if (value is Round && value.Radius > Outer.Radius)
-                    outer = (Round)value;
+                if (value.Radius > Outer.Radius)
+                    outer = value;
                 else
-                    throw new ArgumentException("The outer round must be Round class and more than inner radius");
+                    throw new ArgumentException("The outer round must be more than inner radius");
             }
         }
         public double Area { get => outer.Area - inner.Area; }

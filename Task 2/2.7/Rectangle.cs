@@ -6,28 +6,22 @@ namespace Task2
 {
     class Rectangle : Figure
     {
-        private Point leftTop;
         private double width;
         private double height;
+        public Point LeftTop { get; set; }
 
         public Rectangle(double x, double y, double w, double h)
         {
-            leftTop = new Point(x, y);
-            Width = w;
-            Heigth = h;
+            if (w > 0 && h > 0)
+            {
+                LeftTop = new Point(x, y);
+                Width = w;
+                Heigth = h;
+            }
+            else
+                throw new ArgumentException("The width and heigth cannot be negative or zero");
         }
 
-        public Point LeftTop
-        {
-            get => leftTop;
-            set
-            {
-                if (value is Point)
-                    leftTop = (Point)value;
-                else
-                    throw new ArgumentException("The point  must be Point class");
-            }
-        }
         public double Width
         {
             get => width;
@@ -59,10 +53,14 @@ namespace Task2
         public override void Draw()
         {
             Console.WriteLine("Figure: " + this.ToString()
-            + Environment.NewLine + "First point coordinate: (" + LeftTop.X + ", " + LeftTop.Y + ")"
+            + Environment.NewLine + "Left top point coordinate: (" + LeftTop.X + ", " + LeftTop.Y + ")"
             + Environment.NewLine + "Width: " + Width
             + Environment.NewLine + "Height: " + Heigth
             + Environment.NewLine + "Area: " + Area);
+        }
+        public void SetLeftTop(double x, double y)
+        {
+            LeftTop = new Point(x, y);
         }
     }
 }
