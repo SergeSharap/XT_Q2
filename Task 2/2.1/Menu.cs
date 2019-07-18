@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Task2
+namespace _2._1
 {
-    class Menu
+    public class Menu
     {
+        private int selectedItem;
+        private bool quit = false;
+
         public void Choice()
         {
             Round round = null;
-            bool quit = false;
+            
             do
             {
                 Console.Clear();
@@ -22,7 +23,7 @@ namespace Task2
                     + Environment.NewLine + "5. Quit"
                     );
 
-                int selectedItem;
+                
                 Int32.TryParse(Console.ReadLine(), out selectedItem);
 
                 switch (selectedItem)
@@ -118,7 +119,7 @@ namespace Task2
 
                 if (isCorrectParse)
                     return n;
-                else if (!isCorrectParse)
+                else
                     Console.WriteLine("You entered not a number");
             }
         }

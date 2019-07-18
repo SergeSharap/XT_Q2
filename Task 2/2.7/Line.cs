@@ -4,23 +4,23 @@ using System.Text;
 
 namespace Task2
 {
-    class Line : Figure
+    public class Line : Figure
     {
         private Point firstPoint;
         private Point secondPoint;
 
-        public Line(double p1x, double p1y, double p2x, double p2y)
+        public Line(double p1X, double p1Y, double p2X, double p2Y)
         {
-            if (!IsPointsEqual(new Point(p1x, p1y), new Point(p2x, p2y)))
+            if (!IsPointsEqual(new Point(p1X, p1Y), new Point(p2X, p2Y)))
             {
-                firstPoint = new Point(p1x, p1y);
-                secondPoint = new Point(p2x, p2y);
+                firstPoint = new Point(p1X, p1Y);
+                secondPoint = new Point(p2X, p2Y);
             }
             else
                 throw new ArgumentException("The points must not be equal");
         }
 
-        public double Length { get => Math.Sqrt(Math.Pow(firstPoint.X - secondPoint.X, 2) + Math.Pow(firstPoint.Y - secondPoint.Y, 2)); }
+        public double Length => Math.Sqrt(Math.Pow(firstPoint.X - secondPoint.X, 2) + Math.Pow(firstPoint.Y - secondPoint.Y, 2)); 
         public Point FirstPoint
         {
             get => firstPoint;
@@ -32,7 +32,7 @@ namespace Task2
                     throw new ArgumentException("The first point must be Point class and not equal to second point");
             }
         }
-        public Point SecondtPoint
+        public Point SecondPoint
         {
             get => secondPoint;
             set
@@ -56,7 +56,7 @@ namespace Task2
         {
             Console.WriteLine("Figure: " + this.ToString()
             + Environment.NewLine + "First point coordinate: (" + FirstPoint.X + ", " + FirstPoint.Y + ")"
-            + Environment.NewLine + "Second point coordinate: (" + SecondtPoint.X + ", " + SecondtPoint.Y + ")"
+            + Environment.NewLine + "Second point coordinate: (" + SecondPoint.X + ", " + SecondPoint.Y + ")"
             + Environment.NewLine + "Length: " + Length
             );
         }

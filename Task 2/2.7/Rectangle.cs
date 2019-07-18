@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Task2
 {
-    class Rectangle : Figure
+    public class Rectangle : Figure
     {
         private double width;
         private double height;
@@ -16,10 +16,10 @@ namespace Task2
             {
                 LeftTop = new Point(x, y);
                 Width = w;
-                Heigth = h;
+                Height = h;
             }
             else
-                throw new ArgumentException("The width and heigth cannot be negative or zero");
+                throw new ArgumentException("The width and height cannot be negative or zero");
         }
 
         public double Width
@@ -33,7 +33,7 @@ namespace Task2
                     throw new ArgumentException("The width cannot be negative or zero");
             }
         }
-        public double Heigth
+        public double Height
         {
             get => height;
             set
@@ -44,7 +44,7 @@ namespace Task2
                     throw new ArgumentException("The height cannot be negative or zero");
             }
         }
-        public double Area { get => Width * Heigth; }
+        public double Area => Width * Height; 
 
         public override string ToString()
         {
@@ -55,7 +55,7 @@ namespace Task2
             Console.WriteLine("Figure: " + this.ToString()
             + Environment.NewLine + "Left top point coordinate: (" + LeftTop.X + ", " + LeftTop.Y + ")"
             + Environment.NewLine + "Width: " + Width
-            + Environment.NewLine + "Height: " + Heigth
+            + Environment.NewLine + "Height: " + Height
             + Environment.NewLine + "Area: " + Area);
         }
         public void SetLeftTop(double x, double y)

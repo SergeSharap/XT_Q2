@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Task2
 {
-    class User
+    public class User
     {
         private string firstName;
         private string secondName;
@@ -63,7 +63,7 @@ namespace Task2
                     dateBirthday = value;
             }
         }
-        public int Age { get => GetAge(DateBirthday);  }
+        public int Age => GetAge(DateBirthday);  
 
         private int GetAge(DateTime dateBirth)
         {
@@ -81,7 +81,7 @@ namespace Task2
                 + Environment.NewLine + "Second name: {1}"
                 + Environment.NewLine + "Patronymic: {2}"
                 + Environment.NewLine + "The date of birth: {3}"
-                + Environment.NewLine + "Age: {4}", FirstName, SecondName, Patronymic, DateBirthday, Age);
+                + Environment.NewLine + "Age: {4}", FirstName, SecondName, Patronymic, DateBirthday.ToShortDateString(), Age);
         }
     }
 }

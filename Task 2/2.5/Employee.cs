@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Task2
 {
-    class Employee : User
+    public class Employee : User
     {
         private string position;
         private int workExperience;
@@ -40,13 +40,8 @@ namespace Task2
 
         public override void ShowDetails()
         {
-            Console.WriteLine("First name: {0}."
-                + Environment.NewLine + "Second name: {1}"
-                + Environment.NewLine + "Patronymic: {2}"
-                + Environment.NewLine + "The date of birth: {3}"
-                + Environment.NewLine + "Age: {4}"
-                + Environment.NewLine + "Position: {5}"
-                + Environment.NewLine + "Work experience: {6}", FirstName, SecondName, Patronymic, DateBirthday, Age, Position, WorkExperience);
+            base.ShowDetails();
+            Console.WriteLine("Position: {5}" + Environment.NewLine + "Work experience: {6}", FirstName, SecondName, Patronymic, DateBirthday, Age, Position, WorkExperience);
         }
     }
 }

@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Task2
+namespace _2._2
 {
     class Menu
     {
+        private Triangle triangle = null;
+        private bool quit = false;
+        private int selectedItem;
         public void Choice()
         {
-            Triangle triangle = null;
-            bool quit = false;
+
             do
             {
                 Console.Clear();
@@ -21,17 +21,17 @@ namespace Task2
                     + Environment.NewLine + "4. Quit"
                     );
 
-                int selectedItem;
+                
                 Int32.TryParse(Console.ReadLine(), out selectedItem);
 
                 switch (selectedItem)
                 {
                     case 1:
-                        triangle = TriangleCreater();
+                        TriangleCreater();
                         break;
                     case 2:
                         if (triangle != null)
-                            ChangeTriangle(ref triangle);
+                            ChangeTriangle();
                         else
                         {
                             Console.WriteLine("You have not created triangle yet");
@@ -58,7 +58,7 @@ namespace Task2
                 }
             } while (!quit);
         }
-        private Triangle TriangleCreater()
+        private void TriangleCreater()
         {
             double a, b, c;
             a = Input("Please enter a side of the triangle");
@@ -67,17 +67,15 @@ namespace Task2
 
             try
             {
-                Triangle triangle = new Triangle(a, b, c);
-                return triangle;
+                triangle = new Triangle(a, b, c);
             }
             catch (ArgumentException ex)
             {
                 Console.WriteLine(ex);
                 Console.ReadKey();
-                return null;
             }
         }
-        private void ChangeTriangle(ref Triangle triangle)
+        private void ChangeTriangle()
         {
             double a, b, c;
             a = Input("Please enter a side of the triangle");
@@ -92,7 +90,7 @@ namespace Task2
             {
                 Console.WriteLine(ex);
                 Console.ReadKey();
-          }
+            }
         }
         private double Input(string message)
         {
@@ -104,7 +102,7 @@ namespace Task2
 
                 if (isCorrectParse)
                     return n;
-                else if (!isCorrectParse)
+                else
                     Console.WriteLine("You entered not a number");
             }
         }

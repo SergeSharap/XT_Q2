@@ -28,8 +28,8 @@ namespace Task2
                     throw new ArgumentException("The radius cannot be negative or zero");
             }
         }
-        public double Сircumference { get => 2 * Math.PI * Radius; }
-        public double Area { get => Math.PI * Math.Pow(Radius, 2); }
+        public double Сircumference => 2 * Math.PI * Radius; 
+        public double Area => Math.PI * Math.Pow(Radius, 2); 
 
         public void Draw()
         {

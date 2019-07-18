@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Task2
+namespace _2._2
 {
-    class Triangle
+    public class Triangle
     {
-        private const string argumentException = "Sides of the triangle must be positive and the sum of two side lengths of a triangle is always greater than the third side";
+        private const string ArgumentException = "Sides of the triangle must be positive and the sum of two side lengths of a triangle is always greater than the third side";
         private double a;
         private double b;
         private double c;
@@ -18,7 +18,7 @@ namespace Task2
                 this.c = c;
             }
             else
-                throw new ArgumentException(argumentException);
+                throw new ArgumentException(ArgumentException);
         }
 
         public double A
@@ -29,7 +29,7 @@ namespace Task2
                 if (value > 0 && doesTriangleExist(value, B, C))
                     a = value;
                 else
-                    throw new ArgumentException(argumentException);
+                    throw new ArgumentException(ArgumentException);
             }
         }
         public double B
@@ -40,7 +40,7 @@ namespace Task2
                 if (value > 0 && doesTriangleExist(A, value, C))
                     b = value;
                 else
-                    throw new ArgumentException(argumentException);
+                    throw new ArgumentException(ArgumentException);
             }
         }
         public double C
@@ -51,7 +51,7 @@ namespace Task2
                 if (value > 0 && doesTriangleExist(A, B, value))
                     c = value;
                 else
-                    throw new ArgumentException(argumentException);
+                    throw new ArgumentException(ArgumentException);
             }
         }
 
@@ -78,7 +78,7 @@ namespace Task2
                 this.c = c;
             }
             else
-                throw new ArgumentException(argumentException);
+                throw new ArgumentException(ArgumentException);
         }
         public void ShowDetails()
         {

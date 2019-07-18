@@ -8,8 +8,8 @@ namespace Task2
     {
         private int selectedItem;
         private List<Figure> figures = new List<Figure>();
-        bool quit = false;
-
+        private bool quit = false;
+        private double n;
         public void Choice()
         {
             do
@@ -137,7 +137,7 @@ namespace Task2
             x = Input("Please enter x coordinate of left top point");
             y = Input("Please enter y coordinate of left top point");
             w = Input("Please enter width of the rectangle");
-            h = Input("Please enter heigth of the rectangle");
+            h = Input("Please enter height of the rectangle");
 
             try
             {
@@ -162,7 +162,7 @@ namespace Task2
 
         private double Input(string message)
         {
-            double n;
+
             while (true)
             {
                 Console.WriteLine(message);
@@ -170,7 +170,7 @@ namespace Task2
 
                 if (isCorrectParse)
                     return n;
-                else if (!isCorrectParse)
+                else
                     Console.WriteLine("You entered not a number");
             }
         }

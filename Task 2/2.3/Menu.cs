@@ -4,8 +4,10 @@ using System.Text;
 
 namespace Task2
 {
-    class Menu
+    public class Menu
     {
+        private int selectedItem;
+        private int n;
         public void Choice()
         {
             User user = null;
@@ -24,7 +26,7 @@ namespace Task2
                     + Environment.NewLine + "7. Quit"
                     );
 
-                int selectedItem;
+                
                 Int32.TryParse(Console.ReadLine(), out selectedItem);
 
                 switch (selectedItem)
@@ -43,7 +45,7 @@ namespace Task2
                         break;
                     case 3:
                         if (user != null)
-                            ChangeSecondtName(ref user);
+                            ChangeSecondName(ref user);
                         else
                         {
                             Console.WriteLine("You have not created user yet");
@@ -130,7 +132,7 @@ namespace Task2
                 Console.ReadKey();
             }
         }
-        private void ChangeSecondtName(ref User user)
+        private void ChangeSecondName(ref User user)
         {
             Console.WriteLine("Please enter second name");
             string secondN = Console.ReadLine();
@@ -176,7 +178,6 @@ namespace Task2
         }
         private int Input(string message)
         {
-            int n;
             while (true)
             {
                 Console.WriteLine(message);
@@ -184,7 +185,7 @@ namespace Task2
 
                 if (isCorrectParse)
                     return n;
-                else if (!isCorrectParse)
+                else
                     Console.WriteLine("You entered not a number");
             }
         }

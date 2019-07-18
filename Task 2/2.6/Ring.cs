@@ -7,7 +7,7 @@ namespace Task2
     {
         private Round inner;
         private Round outer;
-        private Point Center { get; set; }
+        public Point Center { get; set; }
 
         public Ring(double inRadius, double outRadius, double x, double y)
         {
@@ -43,8 +43,8 @@ namespace Task2
                     throw new ArgumentException("The outer round must be more than inner radius");
             }
         }
-        public double Area { get => outer.Area - inner.Area; }
-        public double SumOfСircumferences { get => outer.Сircumference + inner.Сircumference; }
+        public double Area => outer.Area - inner.Area; 
+        public double SumOfСircumferences => outer.Сircumference + inner.Сircumference; 
 
         public void SetCenter(double x, double y)
         {

@@ -31,7 +31,8 @@ namespace Task2
                     throw new ArgumentException("The radius cannot be negative or zero");
             }
         }
-        public double Сircumference { get => 2 * Math.PI * Radius; }
+
+        public double Сircumference => 2 * Math.PI * Radius; 
 
         public override string ToString()
         {

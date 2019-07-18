@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Task2
+namespace _2._1
 {
     public class Round
     {
@@ -28,14 +28,14 @@ namespace Task2
                     throw new ArgumentException("The radius cannot be negative or zero");
             }
         }
-        public double Сircumference { get => 2 * Math.PI * Radius;  }
-        public double Area { get => Math.PI * Math.Pow(Radius, 2);  }
+        public double Circumference => 2 * Math.PI * Radius;
+        public double Area => Math.PI * Math.Pow(Radius, 2);  
 
         public void Draw()
         {
             Console.WriteLine("Coordinates of the center: (" + Center.X + ", " + Center.Y + ")"
                 + Environment.NewLine + "Radius: " + Radius
-                + Environment.NewLine + "Сircumference: " + Сircumference
+                + Environment.NewLine + "Circumference : " + Circumference
                 + Environment.NewLine + "Area: " + Area);
         }
         public void SetCenter(double x, double y)

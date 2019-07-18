@@ -13,7 +13,7 @@ namespace Task2
             Center = new Point(0, 0);
         }
 
-        public double Area { get => Math.PI * Math.Pow(Radius, 2); }
+        public double Area => Math.PI * Math.Pow(Radius, 2); 
 
         public override string ToString()
         {
@@ -21,11 +21,8 @@ namespace Task2
         }
         public override void Draw()
         {
-            Console.WriteLine("Figure: " + this.ToString()
-                + Environment.NewLine + "Coordinates of the center: (" + Center.X + ", " + Center.Y + ")"
-                + Environment.NewLine + "Radius: " + Radius
-                + Environment.NewLine + "Сircumference: " + Сircumference
-                + Environment.NewLine + "Area: "+ Area);
+            base.Draw();
+            Console.WriteLine("Area: "+ Area);
         }
     }
 }

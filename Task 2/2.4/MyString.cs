@@ -2,20 +2,24 @@
 
 namespace Task2
 {
-    class MyString
+    public class MyString
     {
-        private char[] myString; 
+        private readonly char[] myString; 
         public int Length { get; }
 
         public MyString(char[] str)
         {
-            this.Length = str.Length;
+            if (str is null)
+                throw new NullReferenceException("Char[] cannot be null");
+            Length = str.Length;
             myString = new char[Length];
             str.CopyTo(myString, 0);
         }
         public MyString(string str)
         {
-            this.Length = str.Length;
+            if (str is null)
+                throw new NullReferenceException("String cannot be null");
+            Length = str.Length;
             myString = new char[Length];
             str.CopyTo(0, myString, 0, Length);
         }
@@ -40,6 +44,13 @@ namespace Task2
 
         public static MyString operator +(MyString s1, MyString s2)
         {
+            if (s1 is null && s2 is null)
+                return null;
+            else if (s1 is null)
+                return s2;
+            else if (s2 is null)
+                return s1;
+            
             int length = s1.Length + s2.Length;
 
             char[] newMyString = new char[length];
@@ -50,6 +61,8 @@ namespace Task2
         }
         public static bool operator ==(MyString s1, MyString s2)
         {
+            if (s1 is null || s2 is null)
+                return false;
             if (s1.Length != s2.Length)
                 return false;
             else
@@ -66,26 +79,27 @@ namespace Task2
         }
         public override bool Equals(object obj)
         {
-            if (obj is MyString)
-                return (MyString)obj == this;
+            if (obj is MyString myS)
+                return myS == this;
             else
                 return false;
         }
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            string str = (string)this;
+            return str.GetHashCode();
         }
         public override string ToString()
         {
             return "MyString";
         }
-        public static implicit operator MyString(string s)
+        public static explicit operator MyString(string s)
         {
             return new MyString(s);
         }
-        public static implicit operator String(MyString s)
+        public static explicit operator String(MyString s)
         {
-            return new string(s.myString);
+            return s is null ? null : new string(s.myString);
         }
         public int IndexOf(char symb)
         {
@@ -97,7 +111,7 @@ namespace Task2
         }
         public MyString Replace(char oldCh, char newCh)
         {
-            MyString myNewString = new MyString(this.myString);
+            MyString myNewString = new MyString(myString);
             for (int i = 0; i < myString.Length; i++)
                 if (myNewString[i] == oldCh)
                     myNewString[i] = newCh;
@@ -122,7 +136,7 @@ namespace Task2
         }
         public MyString Remove(int startIndex)
         {
-            return Remove(startIndex, this.Length - startIndex);
+            return Remove(startIndex, Length - startIndex);
         }
         public char[] ToCharArray()
         {

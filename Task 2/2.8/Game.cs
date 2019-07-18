@@ -1,6 +1,7 @@
 ﻿namespace _2._8
 {
-    class Obstacle
+    class Game
     {
+        Round
     }
 }
