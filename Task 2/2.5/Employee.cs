@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Task2
+namespace _2._5
 {
     public class Employee : User
     {
@@ -41,7 +39,7 @@ namespace Task2
         public override void ShowDetails()
         {
             base.ShowDetails();
-            Console.WriteLine("Position: {5}" + Environment.NewLine + "Work experience: {6}", FirstName, SecondName, Patronymic, DateBirthday, Age, Position, WorkExperience);
+            Console.WriteLine("Position: {0}" + Environment.NewLine + "Work experience: {1}", Position, WorkExperience);
         }
     }
 }

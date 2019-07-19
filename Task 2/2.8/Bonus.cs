@@ -1,32 +1,42 @@
-﻿namespace _2._8
+﻿using System;
+
+namespace _2._8
 { 
     public class Bonus
     {
-        private readonly KindsOfBonus bonus;
+        public Point Position { get; }
+        public KindsOfBonus BonusKind { get; }
 
-        public Bonus(KindsOfBonus kind)
+        public Bonus(KindsOfBonus kind, Point p)
         {
-            bonus = kind;
+            BonusKind = kind;
+            Position = p;
         }
         public enum KindsOfBonus
         {
             Apple = 0,
             Banana = 1,
-            Orange = 2
+            Orange = 2,
+            PoisonMushroom = 3
         }
 
-        public void Eaten(KindsOfBonus kind)
+  
+
+        public void Eaten(KindsOfBonus kind, Player player)
         {
             switch ((int)kind)
             {
                 case 0:
-                    player.curSpeed += 1;
+                    player.CurrentSpeed += 1;
                     break;
                 case 1:
                     player.Lives += 1;
                     break;
                 case 2:
-                    player.curSpeed += 2;
+                    player.CurrentSpeed += 2;
+                    break;
+                case 3:
+                    player.Lives -= 1;
                     break;
             }
         }

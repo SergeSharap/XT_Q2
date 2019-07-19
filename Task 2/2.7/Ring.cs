@@ -1,7 +1,6 @@
 ﻿using System;
 
-
-namespace Task2
+namespace _2._7
 {
     public class Ring : Figure
     {

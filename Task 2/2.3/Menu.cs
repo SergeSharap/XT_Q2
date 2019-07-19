@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Task2
+namespace _2._3
 {
     public class Menu
     {
         private int selectedItem;
-        private int n;
+        private User user = null;
+        private bool quit = false;
+
         public void Choice()
         {
-            User user = null;
-            bool quit = false;
             do
             {
                 Console.Clear();
@@ -32,11 +30,11 @@ namespace Task2
                 switch (selectedItem)
                 {
                     case 1:
-                        user = UserCreater();
+                        UserCreater();
                         break;
                     case 2:
                         if (user != null)
-                            ChangeFirstName(ref user);
+                            ChangeFirstName();
                         else
                         {
                             Console.WriteLine("You have not created user yet");
@@ -45,7 +43,7 @@ namespace Task2
                         break;
                     case 3:
                         if (user != null)
-                            ChangeSecondName(ref user);
+                            ChangeSecondName();
                         else
                         {
                             Console.WriteLine("You have not created user yet");
@@ -54,7 +52,7 @@ namespace Task2
                         break;
                     case 4:
                         if (user != null)
-                            ChangePatronymic(ref user);
+                            ChangePatronymic();
                         else
                         {
                             Console.WriteLine("You have not created user yet");
@@ -63,7 +61,7 @@ namespace Task2
                         break;
                     case 5:
                         if (user != null)
-                            ChangeDateOfBirthday(ref user);
+                            ChangeDateOfBirthday();
                         else
                         {
                             Console.WriteLine("You have not created user yet");
@@ -90,35 +88,31 @@ namespace Task2
                 }
             } while (!quit);
         }
-        private User UserCreater()
+        private void UserCreater()
         {
-            int year, month, day;
-            string firstN, secondN, patr;
-
             Console.WriteLine("Please enter first name");
-            firstN = Console.ReadLine();
+            string firstN = Console.ReadLine();
             Console.WriteLine("Please enter second name");
-            secondN = Console.ReadLine();
+            string secondN = Console.ReadLine();
             Console.WriteLine("Please enter patronymic");
-            patr = Console.ReadLine();
+            string patr = Console.ReadLine();
 
-            year = Input("Please enter year of birth");
-            month = Input("Please enter month of birth");
-            day = Input("Please enter year of birth");
+            int year = Input("Please enter year of birth");
+            int month = Input("Please enter month of birth");
+            int day = Input("Please enter year of birth");
 
             try
             {
-                User user = new User(firstN, secondN, patr, new DateTime(year, month, day));
-                return user;
+                user = new User(firstN, secondN, patr, new DateTime(year, month, day));
+
             }
             catch (ArgumentException ex)
             {
                 Console.WriteLine(ex);
                 Console.ReadKey();
-                return null;
             }
         }
-        private void ChangeFirstName(ref User user)
+        private void ChangeFirstName()
         {
             Console.WriteLine("Please enter first name");
             string firstN = Console.ReadLine();
@@ -132,7 +126,7 @@ namespace Task2
                 Console.ReadKey();
             }
         }
-        private void ChangeSecondName(ref User user)
+        private void ChangeSecondName()
         {
             Console.WriteLine("Please enter second name");
             string secondN = Console.ReadLine();
@@ -146,7 +140,7 @@ namespace Task2
                 Console.ReadKey();
             }
         }
-        private void ChangePatronymic(ref User user)
+        private void ChangePatronymic()
         {
             Console.WriteLine("Please enter patronymic");
             string patr = Console.ReadLine();
@@ -160,12 +154,11 @@ namespace Task2
                 Console.ReadKey();
             }
         }
-        private void ChangeDateOfBirthday(ref User user)
+        private void ChangeDateOfBirthday()
         {
-            int year, month, day;
-            year = Input("Please enter year of birth");
-            month = Input("Please enter month of birth");
-            day = Input("Please enter year of birth");
+            int year = Input("Please enter year of birth");
+            int month = Input("Please enter month of birth");
+            int day = Input("Please enter year of birth");
             try
             {
                 user.DateBirthday = new DateTime(year, month, day);
@@ -181,7 +174,7 @@ namespace Task2
             while (true)
             {
                 Console.WriteLine(message);
-                bool isCorrectParse = Int32.TryParse(Console.ReadLine(), out n);
+                bool isCorrectParse = Int32.TryParse(Console.ReadLine(), out int n);
 
                 if (isCorrectParse)
                     return n;

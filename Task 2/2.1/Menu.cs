@@ -6,11 +6,9 @@ namespace _2._1
     {
         private int selectedItem;
         private bool quit = false;
-
+        private Round round = null;
         public void Choice()
         {
-            Round round = null;
-            
             do
             {
                 Console.Clear();
@@ -29,11 +27,11 @@ namespace _2._1
                 switch (selectedItem)
                 {
                     case 1:
-                        round = RoundCreater();
+                        RoundCreater();
                         break;
                     case 2:
                         if (round != null)
-                            ChangeCoordinates(ref round);
+                            ChangeCoordinates();
                         else
                         {
                             Console.WriteLine("You have not created round yet");
@@ -42,7 +40,7 @@ namespace _2._1
                         break;
                     case 3:
                         if (round != null)
-                            ChangeRadius(ref round);
+                            ChangeRadius();
                         else
                         {
                             Console.WriteLine("You have not created round yet");
@@ -69,36 +67,31 @@ namespace _2._1
                 }
             } while (!quit);
         }
-        private Round RoundCreater()
+        private void RoundCreater()
         {
-            double x, y, r;
-            x = Input("Please enter x coordinate of the circle's center");
-            y = Input("Please enter y coordinate of the circle's center");
-            r = Input("Please enter the radius");
+            double x = Input("Please enter x coordinate of the circle's center");
+            double y = Input("Please enter y coordinate of the circle's center");
+            double r = Input("Please enter the radius");
 
             try
             {
-                Round round = new Round(x, y, r);
-                return round;
+                round = new Round(x, y, r);
             }
             catch (ArgumentException ex)
             {
                 Console.WriteLine(ex);
                 Console.ReadKey();
-                return null;
             }
         }
-        private void ChangeCoordinates(ref Round round)
+        private void ChangeCoordinates()
         {
-            double x, y;
-            x = Input("Please enter x coordinate of the circle's center");
-            y = Input("Please enter y coordinate of the circle's center");
+            double x = Input("Please enter x coordinate of the circle's center");
+            double y = Input("Please enter y coordinate of the circle's center");
             round.Center = new Point(x, y);
         }
-        private void ChangeRadius(ref Round round)
+        private void ChangeRadius()
         {
-            double r;
-            r = Input("Please enter the radius");
+            double r = Input("Please enter the radius");
             try
             {
                 round.Radius = r;
@@ -111,11 +104,10 @@ namespace _2._1
         }
         private double Input(string message)
         {
-            double n;
             while (true)
             {
                 Console.WriteLine(message);
-                bool isCorrectParse = Double.TryParse(Console.ReadLine(), out n);
+                bool isCorrectParse = Double.TryParse(Console.ReadLine(), out double n);
 
                 if (isCorrectParse)
                     return n;

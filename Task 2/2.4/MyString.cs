@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Task2
+namespace _2._4
 {
     public class MyString
     {
@@ -83,11 +83,6 @@ namespace Task2
                 return myS == this;
             else
                 return false;
-        }
-        public override int GetHashCode()
-        {
-            string str = (string)this;
-            return str.GetHashCode();
         }
         public override string ToString()
         {

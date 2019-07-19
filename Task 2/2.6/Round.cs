@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Task2
+namespace _2._6
 {
     public class Round
     {

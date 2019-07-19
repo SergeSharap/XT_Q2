@@ -2,7 +2,7 @@
 
 namespace _2._2
 {
-    class Menu
+    public class Menu
     {
         private Triangle triangle = null;
         private bool quit = false;
@@ -60,10 +60,9 @@ namespace _2._2
         }
         private void TriangleCreater()
         {
-            double a, b, c;
-            a = Input("Please enter a side of the triangle");
-            b = Input("Please enter b side of the triangle");
-            c = Input("Please enter c side of the triangle");
+            double a = Input("Please enter a side of the triangle");
+            double b = Input("Please enter b side of the triangle");
+            double c = Input("Please enter c side of the triangle");
 
             try
             {
@@ -77,10 +76,9 @@ namespace _2._2
         }
         private void ChangeTriangle()
         {
-            double a, b, c;
-            a = Input("Please enter a side of the triangle");
-            b = Input("Please enter b side of the triangle");
-            c = Input("Please enter c side of the triangle");
+            double a = Input("Please enter a side of the triangle");
+            double b = Input("Please enter b side of the triangle");
+            double c = Input("Please enter c side of the triangle");
 
             try
             {
@@ -94,11 +92,10 @@ namespace _2._2
         }
         private double Input(string message)
         {
-            double n;
             while (true)
             {
                 Console.WriteLine(message);
-                bool isCorrectParse = Double.TryParse(Console.ReadLine(), out n);
+                bool isCorrectParse = Double.TryParse(Console.ReadLine(), out double n);
 
                 if (isCorrectParse)
                     return n;

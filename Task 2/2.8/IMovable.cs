@@ -1,7 +1,9 @@
-﻿namespace _2._8
+﻿using System;
+
+namespace _2._8
 {
     internal interface IMovable
     {
-        void Move();
+        void Move(Direction direction);
     }
 }

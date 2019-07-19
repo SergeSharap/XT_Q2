@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Task2
+﻿namespace _2._7
 {
     class Program
     {

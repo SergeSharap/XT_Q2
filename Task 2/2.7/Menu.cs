@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Task2
+namespace _2._7
 {
-    class Menu
+    public class Menu
     {
         private int selectedItem;
         private List<Figure> figures = new List<Figure>();
         private bool quit = false;
-        private double n;
+
         public void Choice()
         {
             do
@@ -59,10 +58,9 @@ namespace Task2
         }
         private void CircleCreater()
         {
-            double x, y, r;
-            x = Input("Please enter x coordinate of the circle's center");
-            y = Input("Please enter y coordinate of the circle's center");
-            r = Input("Please enter the radius");
+            double x = Input("Please enter x coordinate of the circle's center");
+            double y = Input("Please enter y coordinate of the circle's center");
+            double r = Input("Please enter the radius");
 
             try
             {
@@ -77,10 +75,9 @@ namespace Task2
         }
         private void RoundCreater()
         {
-            double x, y, r;
-            x = Input("Please enter x coordinate of the round's center");
-            y = Input("Please enter y coordinate of the round's center");
-            r = Input("Please enter the radius");
+            double x = Input("Please enter x coordinate of the round's center");
+            double y = Input("Please enter y coordinate of the round's center");
+            double r = Input("Please enter the radius");
 
             try
             {
@@ -95,11 +92,10 @@ namespace Task2
         }
         private void RingCreater()
         {
-            double x, y, rIn, rOut;
-            x = Input("Please enter x coordinate of the ring's center");
-            y = Input("Please enter y coordinate of the ring's center");
-            rIn = Input("Please enter the inner radius");
-            rOut = Input("Please enter the outer radius");
+            double x = Input("Please enter x coordinate of the ring's center");
+            double y = Input("Please enter y coordinate of the ring's center");
+            double rIn = Input("Please enter the inner radius");
+            double rOut = Input("Please enter the outer radius");
 
             try
             {
@@ -114,11 +110,10 @@ namespace Task2
         }
         private void LineCreater()
         {
-            double x1, y1, x2, y2;
-            x1 = Input("Please enter x coordinate of first point");
-            y1 = Input("Please enter y coordinate of first point");
-            x2 = Input("Please enter y coordinate of second point");
-            y2 = Input("Please enter y coordinate of second point");
+            double x1 = Input("Please enter x coordinate of first point");
+            double y1 = Input("Please enter y coordinate of first point");
+            double x2 = Input("Please enter y coordinate of second point");
+            double y2 = Input("Please enter y coordinate of second point");
 
             try
             {
@@ -133,11 +128,10 @@ namespace Task2
         }
         private void RectangleCreater()
         {
-            double x, y, h, w;
-            x = Input("Please enter x coordinate of left top point");
-            y = Input("Please enter y coordinate of left top point");
-            w = Input("Please enter width of the rectangle");
-            h = Input("Please enter height of the rectangle");
+            double x = Input("Please enter x coordinate of left top point");
+            double y = Input("Please enter y coordinate of left top point");
+            double w = Input("Please enter width of the rectangle");
+            double h = Input("Please enter height of the rectangle");
 
             try
             {
@@ -162,11 +156,10 @@ namespace Task2
 
         private double Input(string message)
         {
-
             while (true)
             {
                 Console.WriteLine(message);
-                bool isCorrectParse = Double.TryParse(Console.ReadLine(), out n);
+                bool isCorrectParse = Double.TryParse(Console.ReadLine(), out double n);
 
                 if (isCorrectParse)
                     return n;

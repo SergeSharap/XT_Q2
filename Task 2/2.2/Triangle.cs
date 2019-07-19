@@ -11,7 +11,7 @@ namespace _2._2
         
         public Triangle(double a, double b, double c)
         {
-            if (doesTriangleExist(a, b, c))
+            if (DoesTriangleExist(a, b, c))
             {
                 this.a = a;
                 this.b = b;
@@ -26,7 +26,7 @@ namespace _2._2
             get => a;
             set
             {
-                if (value > 0 && doesTriangleExist(value, B, C))
+                if (value > 0 && DoesTriangleExist(value, B, C))
                     a = value;
                 else
                     throw new ArgumentException(ArgumentException);
@@ -37,7 +37,7 @@ namespace _2._2
             get => b;
             set
             {
-                if (value > 0 && doesTriangleExist(A, value, C))
+                if (value > 0 && DoesTriangleExist(A, value, C))
                     b = value;
                 else
                     throw new ArgumentException(ArgumentException);
@@ -48,7 +48,7 @@ namespace _2._2
             get => c;
             set
             {
-                if (value > 0 && doesTriangleExist(A, B, value))
+                if (value > 0 && DoesTriangleExist(A, B, value))
                     c = value;
                 else
                     throw new ArgumentException(ArgumentException);
@@ -65,13 +65,13 @@ namespace _2._2
             }
         }
 
-        private bool doesTriangleExist(double a, double b, double c)
+        private bool DoesTriangleExist(double a, double b, double c)
         {
             return a + b > c && a + c > b && b + c > a;
         }
         public void ChangeSides(double a, double b, double c)
         {
-            if (doesTriangleExist(a, b, c))
+            if (DoesTriangleExist(a, b, c))
             {
                 this.a = a;
                 this.b = b;
