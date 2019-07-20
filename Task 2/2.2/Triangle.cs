@@ -55,7 +55,7 @@ namespace _2._2
             }
         }
 
-        public double Perimeter { get => A + B + C; }
+        public double Perimeter => A + B + C; 
         public double Area
         {
             get
