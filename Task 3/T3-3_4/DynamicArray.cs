@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-namespace T3_3
+namespace T3_3_4
 {
     public class DynamicArray<T> : IEnumerable<T>, IEnumerable, ICloneable
     {
 
         #region Fields
 
-        private T[] _array;
+        protected T[] _array;
 
         #endregion
 
@@ -25,7 +25,7 @@ namespace T3_3
 
         public DynamicArray(IEnumerable<T> inArray) : this(8)
         {
-            this.AddRange(inArray);
+            AddRange(inArray);
         }
 
         #endregion
@@ -36,21 +36,21 @@ namespace T3_3
         {
             get
             {
-                if (index >= Length)
-                    throw new ArgumentOutOfRangeException(nameof(index), "Index must be less than length");
-
                 if (index < 0)
-                    return _array[index + Length];
+                    index += Length;
+
+                if (index >= Length || index < 0)
+                    throw new ArgumentOutOfRangeException(nameof(index), "Invalid index");
 
                 return _array[index];
             }
             set
             {
-                if (index >= Length)
-                    throw new ArgumentOutOfRangeException(nameof(index), "Index must be less than length");
-
                 if (index < 0)
-                    _array[index + Length] = value;
+                    index += Length;
+
+                if (index >= Length || index < 0)
+                    throw new ArgumentOutOfRangeException(nameof(index), "Invalid index");
 
                 _array[index] = value;
             }
@@ -181,10 +181,28 @@ namespace T3_3
 
         public T[] ToArray()
         {
-            return _array;
+            T[] tempArray = new T[Length];
+
+            for (int i = 0; i < Length; i++)
+                tempArray[i] = _array[i];
+
+            return tempArray;
+        }
+
+        public virtual IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < Length; i++)
+                yield return _array[i];
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
 
         #endregion
 
     }
+    
+
 }
