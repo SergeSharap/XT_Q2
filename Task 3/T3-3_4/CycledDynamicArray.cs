@@ -7,12 +7,12 @@ namespace T3_3_4
     public class CycledDynamicArray<T> : DynamicArray<T>
     {
         #region Constructors
-
         public CycledDynamicArray() : base(8) { }
 
         public CycledDynamicArray(int amount) : base(amount) { }
 
         public CycledDynamicArray(IEnumerable<T> inArray) : base(inArray) { }
+
 
         #endregion
         public override IEnumerator<T> GetEnumerator()

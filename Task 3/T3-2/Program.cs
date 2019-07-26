@@ -18,7 +18,7 @@ namespace T3_2
 
             Console.ReadKey();
         }
-        public static Dictionary<string, int> WordsFrequency(string text)
+        private static Dictionary<string, int> WordsFrequency(string text)
         {
             text = text.ToLower();
             string[] words = text.Split(new[] { ' ', '.' }, System.StringSplitOptions.RemoveEmptyEntries);

@@ -4,9 +4,9 @@ namespace T3_3_4
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+
         }
     }
 }
