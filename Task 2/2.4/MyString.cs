@@ -4,23 +4,23 @@ namespace _2._4
 {
     public class MyString
     {
-        private readonly char[] myString; 
-        public int Length { get; }
+        private readonly char[] myString;
+        public int Length => myString.Length;
 
         public MyString(char[] str)
         {
             if (str is null)
                 throw new NullReferenceException("Char[] cannot be null");
-            Length = str.Length;
-            myString = new char[Length];
+
+            myString = new char[str.Length];
             str.CopyTo(myString, 0);
         }
         public MyString(string str)
         {
             if (str is null)
                 throw new NullReferenceException("String cannot be null");
-            Length = str.Length;
-            myString = new char[Length];
+
+            myString = new char[str.Length];
             str.CopyTo(0, myString, 0, Length);
         }
 
@@ -86,7 +86,7 @@ namespace _2._4
         }
         public override string ToString()
         {
-            return "MyString";
+            return (string) this;
         }
         public static explicit operator MyString(string s)
         {
@@ -116,7 +116,7 @@ namespace _2._4
         public MyString Remove(int startIndex, int count)
         {
             if (startIndex < 0 || count < 0 || startIndex + count > Length)
-                throw new ArgumentException("startIndex must be positive or zero and sum of startIndex and count must be greater or equal length of MyString");
+                throw new ArgumentException("startIndex must be positive or zero and sum of startIndex and count must be greater than length of MyString");
 
             char[] myNewString = new char[Length - count];
             int newIndex = 0;

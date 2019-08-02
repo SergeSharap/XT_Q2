@@ -108,7 +108,7 @@ namespace _2._3
             }
             catch (ArgumentException ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine(ex.Message);
                 Console.ReadKey();
             }
         }
@@ -122,7 +122,7 @@ namespace _2._3
             }
             catch (ArgumentException ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine(ex.Message);
                 Console.ReadKey();
             }
         }
@@ -136,7 +136,7 @@ namespace _2._3
             }
             catch (ArgumentException ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine(ex.Message);
                 Console.ReadKey();
             }
         }
@@ -150,7 +150,7 @@ namespace _2._3
             }
             catch (ArgumentException ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine(ex.Message);
                 Console.ReadKey();
             }
         }
@@ -165,7 +165,7 @@ namespace _2._3
             }
             catch (ArgumentException ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine(ex.Message);
                 Console.ReadKey();
             }
         }
