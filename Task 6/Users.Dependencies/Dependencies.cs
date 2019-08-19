@@ -9,6 +9,7 @@ namespace Users.Dependencies
         public static IUsersStorage UsersStorage { get; } 
         public static IAwardsStorage AwardsStorage { get; }
         public static IUsersAwardsStorage UsersAwardsStorage { get; } 
+
         public static ISaver UsersSaver { get; }
         public static ISaver AwardsSaver { get; }
         public static ISaver UsersAwardsSaver { get; }

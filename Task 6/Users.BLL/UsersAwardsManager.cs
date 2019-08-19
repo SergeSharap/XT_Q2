@@ -11,7 +11,7 @@ namespace Users.BLL
     public static class UsersAwardsManager
     {
         private static IUsersAwardsStorage UsersAwardsStorage => Dependencies.Dependencies.UsersAwardsStorage;
-
+        
         public static bool AddAwardToUser(string name, string title)
         {
             User userForAdd = UsersManager.GetUser(name);

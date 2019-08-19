@@ -17,7 +17,6 @@ namespace Users.PL
 
         static void SelectAction()
         {
-            int year, month, day;
             string name, title;
             bool quit = false;
             do
@@ -43,53 +42,79 @@ namespace Users.PL
                     case 1:
                         Console.WriteLine("Enter name: ");
                         name = Console.ReadLine();
-                        year = Input("Please enter year of birth:");
-                        month = Input("Please enter month of birth:");
-                        day = Input("Please enter year of birth:");
+                        int year = Input("Please enter year of birth:");
+                        int month = Input("Please enter month of birth:");
+                        int day = Input("Please enter year of birth:");
                         try
                         {
-                            UsersManager.AddUser(name, new DateTime(year, month, day));
+                            Console.WriteLine(UsersManager.AddUser(name, new DateTime(year, month, day))
+                            ? "User has been created."
+                            : "User already exists.");
                         }
                         catch (ArgumentException ex)
                         {
                             Console.WriteLine(ex.Message);
-                            Console.ReadKey();
                         }
+                        Console.ReadKey();
                         break;
                     case 2:
                         Console.WriteLine("Enter name: ");
                         name = Console.ReadLine();
-                        UsersManager.DeleteUser(name);
+                        Console.WriteLine(UsersManager.DeleteUser(name)
+                            ? "User has been deleted."
+                            : "User is not found.");
+                        Console.ReadKey();
                         break;
                     case 3:
                         Console.WriteLine("Enter name: ");
                         name = Console.ReadLine();
                         Console.WriteLine("Enter title: ");
                         title = Console.ReadLine();
-                        UsersAwardsManager.AddAwardToUser(name, title);
+                        Console.WriteLine(UsersAwardsManager.AddAwardToUser(name, title)
+                            ? "Award has been added to user."
+                            : "User or award are not found or user already has got the award.");
+                        Console.ReadKey();
                         break;
                     case 4:
                         Console.WriteLine("Enter name: ");
                         name = Console.ReadLine();
                         Console.WriteLine("Enter title: ");
                         title = Console.ReadLine();
-                        UsersAwardsManager.RemoveAwardFromUser(name, title);
+                        Console.WriteLine(UsersAwardsManager.RemoveAwardFromUser(name, title)
+                            ? "Award has been deleted from user."
+                            : "User or award are not found or user has not got the award.");
+                        Console.ReadKey();
                         break;
                     case 5:
                         ShowAllUsersWithAwards(UsersManager.GetAllUsers(), UsersAwardsManager.GetAllList());
+                        Console.ReadKey();
                         break;
                     case 6:
                         Console.WriteLine("Enter title: ");
                         title = Console.ReadLine();
-                        AwardsManager.AddAward(title);
+                        try
+                        {
+                            Console.WriteLine(AwardsManager.AddAward(title)
+                            ? "Award has been created."
+                            : "Award already exists.");
+                        }
+                        catch(ArgumentException ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        Console.ReadKey();
                         break;
                     case 7:
                         Console.WriteLine("Enter title: ");
                         title = Console.ReadLine();
-                        AwardsManager.DeleteAward(title);
+                        Console.WriteLine(AwardsManager.DeleteAward(title)
+                        ? "Award has been deleted."
+                        : "Award is not found.");
+                        Console.ReadKey();
                         break;
                     case 8:
                         ShowAllAwards(AwardsManager.GetAllAwards());
+                        Console.ReadKey();
                         break;
                     case 9:
                         quit = true;
@@ -109,47 +134,34 @@ namespace Users.PL
 
         private static void ShowAllUsersWithAwards(ICollection<User> users, ICollection<UsersAwards> usersAwards)
         {
-            var usersGroupBy = usersAwards.GroupBy(uA => uA.User.Name);
-            var usersWithAwards = 
-                from u in users
-                join uG in usersGroupBy
-                    on u.Name equals uG.Key into uAwards
-                from sub in uAwards.DefaultIfEmpty()
-                select new
-                {
-                    Name = u.Name,
-                    DateOfBirth = u.DateOfBirth,
-                    listOfAwards = sub
-                };
-
-
-            foreach (var userWithAwards in usersWithAwards)
+            foreach (var user in users)
             {
-                Console.WriteLine($"Name: {userWithAwards.Name}. Date of birth: {userWithAwards.DateOfBirth.ToShortDateString()}.");
+                var awards =
+                    from uA in usersAwards
+                    where uA.User.Name == user.Name
+                    select uA.Award.Title;
+
+                Console.WriteLine($"Name: {user.Name}. Date of birth: {user.DateOfBirth.ToShortDateString()}.");
                 Console.WriteLine("List of awards: ");
 
-                if (userWithAwards.listOfAwards == null)
+                if (!awards.Any())
                 {
                     Console.WriteLine("User have not got any awards");
                     continue;
                 }
-                foreach (var award in userWithAwards.listOfAwards)
+                foreach (var award in awards)
                 {
-                    Console.Write($"| {award.Award.Title} ");
-                }
+                    Console.Write($"| {award} ");
 
+                }
                 Console.WriteLine(Environment.NewLine + new string('—', 50));
             }
-
-            Console.ReadLine();
         }
 
         private static void ShowAllAwards(ICollection<Award> awards)
         {
             foreach (var award in awards)
                 Console.WriteLine($"Title: {award.Title}.");
-
-            Console.ReadLine();
         }
 
         private static int Input(string message)
