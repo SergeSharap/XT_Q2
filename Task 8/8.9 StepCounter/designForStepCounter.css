@@ -1,0 +1,49 @@
+input{
+  display: none;
+}
+
+div.second, div.third, div.fourth, div.first{
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  position: relative;
+  background: linear-gradient(to bottom, #ccc 20%, #aaa 50%, #ccc 80%, #ccc 100%);
+  text-align: center;
+  line-height: 30px;
+}
+
+div.second:before, div.third:before, div.fourth:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 4px solid white;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+div.second:after, div.third:after, div.first:after{
+  content: "";
+  position: absolute;
+  right: -4px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 4px solid #aaa;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+input:checked+div{
+  background:linear-gradient(to bottom, rgb(106,211,80) 20%, rgb(72,181,45) 50%, rgb(106,211,80) 80%);;
+  color:#fff; 
+}
+
+input:checked+div::after{
+  border-left-color:rgb(106,211,80);
+}
+div::before,label:last-child div::after{
+ border-left-color:white;
+ z-index:2
+}

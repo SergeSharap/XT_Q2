@@ -1,0 +1,47 @@
+body{
+    background-color: rgb(50, 100, 146);
+}
+
+.hosting{
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 700px;
+    margin: auto;
+    padding: 10px 10px;
+    box-shadow: 0px 20px 20px rgba(7, 7, 7, 0.4);
+}
+
+i{
+    font-size:36px;
+    color: rgb(116, 122, 122)
+}
+
+.left, .right, .center{
+    display: inline-block;
+    text-align: center;
+    margin: 5px auto;
+}
+
+.left{
+    width: 33%;
+    border-right: 1px solid gray;
+}
+.right{
+    width: 32%;
+    border-left: 1px solid gray;
+}
+.center{
+    width:33%;    
+}
+
+h3{
+    color: coral;
+}
+
+a{
+    color: white;
+    background-color: coral;
+    text-decoration: none;
+    padding: 4px 8px;
+}

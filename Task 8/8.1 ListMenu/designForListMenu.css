@@ -1,0 +1,17 @@
+ul{
+    background-color: bisque;
+    width: 200px;
+    list-style-type: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px maroon;
+    padding-top: 8px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    line-height: 25px;
+}
+
+li{
+    color: maroon;
+}
+

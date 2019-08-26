@@ -1,0 +1,18 @@
+body{
+    background-color: rgb(63, 59, 59);
+}
+
+div{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 30px;
+    display: inline-block;
+    background: repeating-linear-gradient(to top, transparent, transparent 20px, rgb(63, 59, 59) 20px, rgb(63, 59, 59) 24px), linear-gradient(to top, rgb(255, 141, 2), rgb(255, 208, 89));;
+}
+
+.column1{height: 116px;}
+.column2{height: 44px;}
+.column3{height: 188px;}
+.column4{height: 236px;}
+.column5{height: 116px;}
+.column6{height: 68px;}

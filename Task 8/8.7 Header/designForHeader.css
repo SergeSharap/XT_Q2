@@ -1,0 +1,15 @@
+div.header{
+    padding: 20px; 
+    background-color: rgb(26, 92, 70);
+    color: white;
+    font-size: 20px;
+    border: 1px solid white;
+    margin-bottom: -10px;
+}
+
+div.text{
+    padding: 10px;
+    background-color: lightgray;
+    border: 1px solid white;
+    margin-left: 40px;
+}
