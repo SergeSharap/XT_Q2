@@ -42,9 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Award.cs" />
+    <Compile Include="IAwardsManager.cs" />
     <Compile Include="IAwardsStorage.cs" />
     <Compile Include="ILoader.cs" />
     <Compile Include="ISaver.cs" />
+    <Compile Include="IUsersAwardsManager.cs" />
+    <Compile Include="IUsersManager.cs" />
     <Compile Include="IUsersAwardsStorage.cs" />
     <Compile Include="IUsersStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

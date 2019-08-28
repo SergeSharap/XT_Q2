@@ -4,31 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entities;
-using Users.Dependencies;
 
 namespace Users.BLL
 {
-    public static class AwardsManager
+    public class AwardsManager : IAwardsManager
     {
-        private static IAwardsStorage AwardsStorage => Dependencies.Dependencies.AwardsStorage;
+        private static IAwardsStorage AwardsStorage;
+        private static ISaver AwardsSaver;
 
-        public static Award GetAward(string title)
+        public event Action<string> OnDeleted; 
+
+        public AwardsManager(IAwardsStorage awardsStorage, ISaver awardsSaver)
+        {
+            AwardsStorage = awardsStorage;
+            AwardsSaver = awardsSaver;
+        }
+
+        public Award GetAward(string title)
         {
             return AwardsStorage.GetAward(title);
         }
 
-        public static bool AddAward(string title)
+        public bool AddAward(string title)
         {
             return AwardsStorage.AddAward(title);
         }
 
-        public static bool DeleteAward(string title)
+        public bool DeleteAward(string title)
         {
             if (!AwardsStorage.DeleteAward(title)) return false;
-            UsersAwardsManager.DeleteAllByAward(title);
+            OnDeleted?.Invoke(title);
             return true;
         }
 
-        public static ICollection<Award> GetAllAwards() => AwardsStorage.GetAllAwards();
+        public ICollection<Award> GetAllAwards() => AwardsStorage.GetAllAwards();
+
+        public void Save()
+        {
+            AwardsSaver.SaveToFile();
+        }
     }
 }

@@ -49,6 +49,10 @@
       <Project>{dc543dc2-b1da-40a0-8eca-f59163698a3a}</Project>
       <Name>Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Users.BLL\Users.BLL.csproj">
+      <Project>{99a6a711-31cf-4d2d-aac8-cd02fa33c7d7}</Project>
+      <Name>Users.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Users.DALTextFiles\Users.DALTextFiles.csproj">
       <Project>{17a4a0e7-a2fc-4a9d-a0e5-bd92645ed6e0}</Project>
       <Name>Users.DALTextFiles</Name>

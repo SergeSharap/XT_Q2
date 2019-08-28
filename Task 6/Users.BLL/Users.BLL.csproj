@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AwardsManager.cs" />
-    <Compile Include="Saver.cs" />
     <Compile Include="UsersAwardsManager.cs" />
     <Compile Include="UsersManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -51,14 +50,6 @@
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{dc543dc2-b1da-40a0-8eca-f59163698a3a}</Project>
       <Name>Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Users.DALTextFiles\Users.DALTextFiles.csproj">
-      <Project>{17a4a0e7-a2fc-4a9d-a0e5-bd92645ed6e0}</Project>
-      <Name>Users.DALTextFiles</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Users.Dependencies\Users.Dependencies.csproj">
-      <Project>{25aaf5d1-263e-4546-ba97-03c74c4cd04e}</Project>
-      <Name>Users.Dependencies</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

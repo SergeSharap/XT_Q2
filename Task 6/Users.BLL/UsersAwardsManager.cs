@@ -4,15 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entities;
-using Users.Dependencies;
 
 namespace Users.BLL
 {
-    public static class UsersAwardsManager
+    public class UsersAwardsManager : IUsersAwardsManager
     {
-        private static IUsersAwardsStorage UsersAwardsStorage => Dependencies.Dependencies.UsersAwardsStorage;
-        
-        public static bool AddAwardToUser(string name, string title)
+        private static IUsersAwardsStorage UsersAwardsStorage;
+        private static ISaver UsersAwardsSaver;
+        private static IUsersManager UsersManager;
+        private static IAwardsManager AwardsManager;
+
+        public UsersAwardsManager(IUsersAwardsStorage usersAwardsStorage, ISaver userAwardSaver, IUsersManager usersManager, IAwardsManager awardsManager)
+        {
+            UsersAwardsStorage = usersAwardsStorage;
+            UsersAwardsSaver = userAwardSaver;
+            UsersManager = usersManager;
+            AwardsManager = awardsManager;
+
+            UsersManager.OnDeleted += DeleteAllByUser;
+            AwardsManager.OnDeleted += DeleteAllByAward;
+        }
+
+        public bool AddAwardToUser(string name, string title)
         {
             User userForAdd = UsersManager.GetUser(name);
             Award awardForAdd = AwardsManager.GetAward(title);
@@ -22,7 +35,7 @@ namespace Users.BLL
             return UsersAwardsStorage.AddAwardToUser(userForAdd, awardForAdd);
         }
 
-        public static bool RemoveAwardFromUser(string name, string title)
+        public bool RemoveAwardFromUser(string name, string title)
         {
             if (UsersManager.GetUser(name) == null || AwardsManager.GetAward(title) == null)
                 return false;
@@ -30,20 +43,24 @@ namespace Users.BLL
             return UsersAwardsStorage.RemoveAwardFromUser(name, title);
         }
 
-        public static ICollection<UsersAwards> GetAllList()
+        public ICollection<UsersAwards> GetAllList()
         {
             return UsersAwardsStorage.GetAllList();
         }
 
-        public static void DeleteAllByUser(string name)
+        public void DeleteAllByUser(string name)
         {
             UsersAwardsStorage.DeleteAllByUser(name);
         }
 
-        public static void DeleteAllByAward(string title)
+        public void DeleteAllByAward(string title)
         {
             UsersAwardsStorage.DeleteAllByAward(title);
         }
 
+        public void Save()
+        {
+            UsersAwardsSaver.SaveToFile();
+        }
     }
 }
