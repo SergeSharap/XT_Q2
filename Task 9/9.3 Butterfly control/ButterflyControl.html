@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Butterfly control</title>
+        <link href="style.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div id="lists1" class="lists">
+            <div>
+                <span>Available</span><br/>
+                <select id="list1" name="list1[]" multiple="multiple" size="5">
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                    <option value="4">Option 4</option>
+                    <option value="5">Option 5</option>
+                </select>
+            </div>
+            <div class="buttons">
+                <input type="button" class="allToRight" value=">>"/ onclick="moveAllToRight('list1', 'list2')"><br/>
+                <input type="button" class="toRight" value=">" onclick="moveToRight('list1', 'list2')"/><br/>
+                <input type="button" class="toLeft" value="<" onclick="moveToLeft('list1', 'list2')"/><br/>
+                <input type="button" class="allToLeft" value="<<"/ onclick="moveAllToLeft('list1', 'list2')"><br/>
+            </div>
+            <div>
+                <span>Selected</span><br/>
+                <select id="list2" name="list2[]" multiple="multiple" size="5"></select>
+            </div>
+        </div>
+
+        <div id="lists2" class="lists">
+            <div>
+                <span>Available</span><br/>
+                <select id="list3" name="list3[]" multiple="multiple" size="5">
+                    <option value="1">Option 6</option>
+                    <option value="2">Option 7</option>
+                    <option value="3">Option 8</option>
+                    <option value="4">Option 9</option>
+                    <option value="5">Option 10</option>
+                </select>
+            </div>
+            <div class="buttons">
+                <input type="button" class="allToRight" value=">>" onclick="moveAllToRight('list3', 'list4')"/><br/>
+                <input type="button" class="toRight" value=">" onclick="moveToRight('list3', 'list4')"/><br/>
+                <input type="button" class="toLeft" value="<" onclick="moveToLeft('list3', 'list4')"/><br/>
+                <input type="button" class="allToLeft" value="<<" onclick="moveAllToLeft('list3', 'list4')"/><br/>
+            </div>
+            <div>
+                <span>Selected</span><br/>
+                <select id="list4" name="list4[]" multiple="multiple" size="5"></select>
+            </div>
+        </div>
+        <script src="ButterflyControl.js"></script>
+    </body>
+</html>

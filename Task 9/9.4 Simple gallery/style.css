@@ -1,0 +1,9 @@
+﻿.timer {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 30px 50px;
+    background-color: rgb(238, 189, 130);
+}
+div {
+    display: inline-block;
+}
