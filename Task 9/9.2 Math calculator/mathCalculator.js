@@ -16,11 +16,11 @@ function calculator() {
     function calculate(inpStr) {
         var multNum = /\d(\.\d)?[^\+-=\*\/]+\d(\.\d)?/;
         var multOp = /(=|-|\+|\*|\/|\.)\D*(=|-|\+|\*|\/|\.)/;
-        var inor = /[^\d=\+\*\/-\s\.]+/;
+        var odd = /[^\d=\+\*\/-\s\.]+/;
         var beg =/^(=|-|\+|\*|\/)/;
         var end = /=\s*$/;
         var equals = inpStr.match(/=/g);
-        if (multNum.test(inpStr) || multOp.test(inpStr) || inor.test(inpStr) ||
+        if (multNum.test(inpStr) || multOp.test(inpStr) || odd.test(inpStr) ||
         beg.test(inpStr) || !end.test(inpStr) || equals.length !== 1) {
             return "error";
         }        
@@ -35,7 +35,7 @@ function calculator() {
         {
             result = operation(result, operations[i], numbers[i + 1]);
         }
-        return result;
+        return (+result).toFixed(2);
     }
     
     function operation(val1, operation, val2) {
